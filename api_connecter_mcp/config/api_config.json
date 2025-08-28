@@ -1,0 +1,211 @@
+{
+  "apis": {
+    "example_rest_api": {
+      "name": "示例REST API",
+      "description": "这是一个示例REST API配置",
+      "enabled": false,
+      "base_url": "https://api.example.com",
+      "auth_type": "api_key",
+      "auth": {
+        "key": "",
+        "header_name": "X-API-Key"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "endpoints": {
+        "get_users": {
+          "path": "/users",
+          "method": "GET",
+          "description": "获取用户列表",
+          "parameters": {
+            "page": "页码",
+            "limit": "每页数量"
+          },
+          "response_format": "json"
+        },
+        "get_user": {
+          "path": "/users/{id}",
+          "method": "GET",
+          "description": "获取单个用户信息",
+          "parameters": {
+            "id": "用户ID"
+          },
+          "response_format": "json"
+        },
+        "create_user": {
+          "path": "/users",
+          "method": "POST",
+          "description": "创建新用户",
+          "parameters": {
+            "name": "用户名",
+            "email": "邮箱"
+          },
+          "response_format": "json"
+        }
+      }
+    },
+    "jsonplaceholder": {
+      "name": "JSONPlaceholder API",
+      "description": "免费的测试API服务",
+      "enabled": true,
+      "base_url": "https://jsonplaceholder.typicode.com",
+      "auth_type": "none",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "endpoints": {
+        "get_posts": {
+          "path": "/posts",
+          "method": "GET",
+          "description": "获取所有文章",
+          "parameters": {},
+          "response_format": "json"
+        },
+        "get_post": {
+          "path": "/posts/{id}",
+          "method": "GET",
+          "description": "获取单篇文章",
+          "parameters": {
+            "id": "文章ID"
+          },
+          "response_format": "json"
+        },
+        "get_users": {
+          "path": "/users",
+          "method": "GET",
+          "description": "获取所有用户",
+          "parameters": {},
+          "response_format": "json"
+        },
+        "get_comments": {
+          "path": "/comments",
+          "method": "GET",
+          "description": "获取所有评论",
+          "parameters": {
+            "postId": "文章ID（可选）"
+          },
+          "response_format": "json"
+        }
+      }
+    },
+    "github_api": {
+      "name": "GitHub API",
+      "description": "GitHub REST API v3",
+      "enabled": false,
+      "base_url": "https://api.github.com",
+      "auth_type": "bearer",
+      "auth": {
+        "token": ""
+      },
+      "headers": {
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": "API_Connecter_MCP/1.0"
+      },
+      "endpoints": {
+        "get_user": {
+          "path": "/user",
+          "method": "GET",
+          "description": "获取当前用户信息",
+          "parameters": {},
+          "response_format": "json"
+        },
+        "get_repos": {
+          "path": "/user/repos",
+          "method": "GET",
+          "description": "获取用户仓库列表",
+          "parameters": {
+            "type": "仓库类型（all, owner, member）",
+            "sort": "排序方式（created, updated, pushed, full_name）",
+            "direction": "排序方向（asc, desc）"
+          },
+          "response_format": "json"
+        },
+        "get_public_repos": {
+          "path": "/users/{username}/repos",
+          "method": "GET",
+          "description": "获取指定用户的公开仓库",
+          "parameters": {
+            "username": "用户名"
+          },
+          "response_format": "json"
+        }
+      }
+    },
+    "alphavantage": {
+      "name": "Alpha Vantage Stock API",
+      "description": "Alpha Vantage提供全球股票、外汇、加密货币和经济指标数据",
+      "enabled": true,
+      "base_url": "https://www.alphavantage.co",
+      "auth_type": "api_key",
+      "auth": {
+        "key": "IO7W2CKZ9M7F75PQ",
+        "param_name": "apikey"
+      },
+      "headers": {
+        "User-Agent": "API_Connecter_MCP/1.0"
+      },
+      "endpoints": {
+        "time_series_intraday": {
+          "path": "/query",
+          "method": "GET",
+          "description": "获取股票日内时间序列数据",
+          "parameters": {
+            "function": "TIME_SERIES_INTRADAY",
+            "symbol": "股票代码",
+            "interval": "时间间隔(1min,5min,15min,30min,60min)",
+            "apikey": "API密钥"
+          },
+          "default_params": {
+            "function": "TIME_SERIES_INTRADAY",
+            "datatype": "json"
+          }
+        },
+        "quote_endpoint": {
+          "path": "/query",
+          "method": "GET",
+          "description": "获取股票实时报价",
+          "parameters": {
+            "function": "GLOBAL_QUOTE",
+            "symbol": "股票代码",
+            "apikey": "API密钥"
+          },
+          "default_params": {
+            "function": "GLOBAL_QUOTE",
+            "datatype": "json"
+          }
+        }
+      },
+      "rate_limit": {
+        "requests_per_minute": 5,
+        "requests_per_day": 500
+      }
+    }
+  },
+  "default_settings": {
+    "timeout": 30,
+    "max_retries": 3,
+    "retry_delay": 1,
+    "user_agent": "API_Connecter_MCP/1.0",
+    "verify_ssl": true,
+    "follow_redirects": true
+  },
+  "security": {
+    "allowed_domains": [],
+    "blocked_domains": [],
+    "max_redirects": 5,
+    "max_response_size": 10485760
+  },
+  "data_processing": {
+    "max_preview_size": 1000,
+    "auto_detect_format": true,
+    "default_encoding": "utf-8",
+    "date_formats": [
+      "%Y-%m-%d",
+      "%Y-%m-%d %H:%M:%S",
+      "%Y/%m/%d",
+      "%d/%m/%Y"
+    ]
+  }
+}
