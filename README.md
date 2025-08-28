@@ -96,7 +96,7 @@ mcp>=1.0.0
 python-dotenv>=1.0.0
 ```
 
-### 🗂️ 配置文件设置
+### 🗂️ 配置文件设置 （可选，不是必须）
 
 #### 1. 环境变量配置
 复制示例文件：
@@ -104,7 +104,7 @@ python-dotenv>=1.0.0
 cp .env.example .env
 ```
 
-编辑`.env`文件：
+编辑`.env`文件：（可选，不是必须）
 ```bash
 # API密钥配置
 OPENAI_API_KEY=sk-your-openai-key
@@ -116,7 +116,7 @@ MAX_RESPONSE_SIZE=10485760
 LOG_LEVEL=INFO
 ```
 
-#### 2. API配置文件
+#### 2. API配置文件（可选，不是必须）
 编辑`config/api_config.json`：
 ```json
 {
