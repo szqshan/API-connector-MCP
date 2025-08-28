@@ -1,0 +1,2 @@
+[console_scripts]
+api-connecter-mcp = api_connecter_mcp.main:main
