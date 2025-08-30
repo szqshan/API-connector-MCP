@@ -67,7 +67,7 @@ pip install -e .
      "mcpServers": {
        "api-connecter": {
          "command": "uvx",
-         "args": ["api-connecter-mcp"],
+         "args": ["api-connecter-mcp"]
        }
      }
    }
